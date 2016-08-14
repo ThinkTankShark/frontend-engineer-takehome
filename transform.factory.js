@@ -17,7 +17,8 @@ app.controller('TakeHomeController', [
 
         // 2) average net_total per guest for each employee
         $scope.avgPerEmployee = calculateAvgTotalPerEmployee(response.data);
-        $scope.msg = 'Please Click Below'
+        $scope.totalPerEmployee = sumTotal($scope.avgPerEmployee);
+        $scope.msg = 'Please Click Below';
       });
   }]);
 
@@ -91,6 +92,14 @@ function calculateAvg(data){
   }
 
   return res;
+}
+
+function sumTotal(data){
+  var sum = 0;
+  data.forEach(function(arr){
+    sum += arr[1];
+  });
+  return sum;
 }
 
 
